@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.14)
+project(gg)
+set(SFML_INCLUDE_DIR "/home/rewieer/Libraries/SFML-2.5.1/include")
+set(SFML_LIBRARY_DIR "/home/rewieer/Libraries/SFML-2.5.1/lib")
+set(SFML_DIR "/home/rewieer/Libraries/SFML-2.5.1/lib/cmake/SFML")
+link_directories(SFML_LIBRARY_DIR)
+include_directories(SFML_INCLUDE_DIR)
+find_package(SFML 2.5.1 COMPONENTS system window graphics network audio)
+if(SFML_FOUND)
+    message(STATUS "SFML_INCLUDE_DIR: ${SFML_INCLUDE_DIR}")
+    message(STATUS "SFML_LIBRARIES: ${SFML_LIBRARIES}")
+    message(STATUS "SFML_VERSION: ${SFML_VERSION}")
+endif()
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(gg main.cpp Game.cpp Game.h keys.cfg.txt Anim_Base.cpp Anim_Base.h Anim_Directional.h BaseState.h Character.cpp Character.h DebugOverlay.h Directions.h Enemy.cpp Enemy.h EntityBase.cpp EntityBase.h EntityManager.cpp EntityManager.h EventManager.cpp EventManager.h Map.cpp Map.h Player.cpp Player.h ResourceManager.h SharedContext.h SpriteSheet.cpp SpriteSheet.h State_Game.cpp State_Game.h State_GameOver.cpp State_GameOver.h State_Intro.cpp State_Intro.h State_MainMenu.cpp State_MainMenu.h StateManager.cpp StateManager.h State_Paused.cpp State_Paused.h TextureManager.h Utilities.h Window.cpp Window.h Anim_Directional.cpp)
+
+target_link_libraries(gg  sfml-graphics sfml-window sfml-system)
